@@ -1,20 +1,7 @@
 """
 TU850-3
 AINL3001 — Knowledge-Driven AI
-Dr. Bianca Schoen-Phelan
-2026
-
-Week 4 Tutorial
-Introducing the Problem Class
-
-In previous weeks, we represented problems directly using
-variables and functions.
-
-From this week onwards, we will use a common Problem class
-where appropriate.
-
-This tutorial uses the familiar grid world from earlier weeks
-to explore the new structure.
+Week 4 Tutorial: Introducing the Problem Class
 """
 
 from common.problem import Problem
@@ -27,57 +14,43 @@ class GridProblem(Problem):
     """
     A simple grid-world problem.
 
-    A state is represented as an (x, y) coordinate.
-
-    Example:
-
+    A state is an (x, y) coordinate.
         (0, 0) = top-left corner
         (4, 4) = bottom-right corner
+
+    x grows to the right, y grows DOWNWARD.
     """
 
     def actions(self, state):
-        """
-        Return the valid actions from this state.
+        """Return the list of valid action names from this state."""
+        x, y = state
+        valid = []
 
-        Possible actions:
+        if y > 0:                  # not on the top row
+            valid.append("UP")
+        if y < GRID_SIZE - 1:      # not on the bottom row
+            valid.append("DOWN")
+        if x > 0:                  # not on the left column
+            valid.append("LEFT")
+        if x < GRID_SIZE - 1:      # not on the right column
+            valid.append("RIGHT")
 
-            UP
-            DOWN
-            LEFT
-            RIGHT
-
-        Remember: an action must not move outside the grid.
-        """
-
-        # TODO:
-        #
-        # 1. Extract x and y from state.
-        # 2. Create an empty list of actions.
-        # 3. Check which movements are valid.
-        # 4. Add valid actions to the list.
-        # 5. Return the list.
-
-        pass
+        return valid
 
     def result(self, state, action):
-        """
-        Return the new state produced by performing an action.
+        """Return the new state produced by performing an action."""
+        x, y = state
 
-        Example:
+        if action == "UP":
+            return (x, y - 1)
+        if action == "DOWN":
+            return (x, y + 1)
+        if action == "LEFT":
+            return (x - 1, y)
+        if action == "RIGHT":
+            return (x + 1, y)
 
-            state  = (0, 0)
-            action = "RIGHT"
-
-            result = (1, 0)
-        """
-
-        # TODO:
-        #
-        # 1. Extract x and y from state.
-        # 2. Check which action was requested.
-        # 3. Return the resulting state.
-
-        pass
+        return state  # unknown action: stay where we are
 
 
 # --------------------------------------------------
@@ -97,37 +70,18 @@ problem = GridProblem(
 print("Initial state:", problem.initial)
 print("Goal:", problem.goal)
 
-
 print("\nActions from (0, 0):")
-
 actions = problem.actions((0, 0))
-
 print(actions)
 
-
 print("\nResults of those actions:")
-
 if actions is not None:
     for action in actions:
-
-        new_state = problem.result(
-            (0, 0),
-            action
-        )
-
-        print(
-            action,
-            "->",
-            new_state
-        )
-
+        new_state = problem.result((0, 0), action)
+        print(action, "->", new_state)
 
 print("\nIs (4, 4) the goal?")
-
-print(
-    problem.goal_test((4, 4))
-)
-
+print(problem.goal_test((4, 4)))
 
 # --------------------------------------------------
 # REFLECTION QUESTIONS

@@ -1,5 +1,31 @@
 # AINL3001 — Knowledge-Driven AI
 
+<!-- Module GitHub Repository 
+
+          | 
+
+          | git fetch upstream 
+
+          ↓ 
+
+   Your Local Repository 
+
+          | 
+
+          | git merge upstream/main 
+
+          ↓ 
+
+ Updated Local Repository 
+
+          | 
+
+          | git push origin main 
+
+          ↓ 
+
+  Your GitHub Repository  -->
+
 **TU850-3 BSc in Data Science and Artificial Intelligence**  
 **Dr. Bianca Schoen-Phelan**  
 **2026**
