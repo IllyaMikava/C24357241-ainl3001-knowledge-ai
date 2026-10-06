@@ -441,11 +441,11 @@ Record the final cost.
 
 | Attempt | Final Cost |
 |---|---:|
-| 1 | |
-| 2 | |
-| 3 | |
-| 4 | |
-| 5 | |
+| 1 | 0 |
+| 2 | 1 |
+| 3 | 1 |
+| 4 | 2 |
+| 5 | 1 |
 
 Consider:
 
@@ -516,8 +516,8 @@ Record the best cost you find.
 
 | Algorithm | Best Cost Found |
 |---|---:|
-| Hill Climbing | |
-| Simulated Annealing | |
+| Hill Climbing | 0 |
+| Simulated Annealing | 0 |
 
 Consider the behaviour you observed:
 
