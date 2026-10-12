@@ -1,4 +1,4 @@
-# AINL3001 — Knowledge-Driven AI
+# AINL3001 Knowledge-Driven AI
 
 <!-- Module GitHub Repository 
 
@@ -30,15 +30,15 @@
 **Dr. Bianca Schoen-Phelan**  
 **2026**
 
-This repository contains the practical lab material for **AINL3001 — Knowledge-Driven AI**.
+This repository contains the practical lab material for **AINL3001 Knowledge-Driven AI**.
 
 It contains:
 
-- Weekly lab instructions
-- Starter code
-- Shared Python code
-- Supporting resources
-- Solution code when it is released
+- Weekly lab instructions,
+- Starter code,
+- Shared Python code,
+- Supporting resources,
+- Solution code when it is released.
 
 > **Important:** Open the entire `ainl3001-knowledge-ai` folder in VS Code rather than opening an individual week folder or Python file directly.
 
@@ -50,7 +50,7 @@ It contains:
 | 2 | [Uninformed Search](week02_uninformed_search/) |
 | 3 | [Informed Search](week03_informed_search/) |
 | 4 | [Local Search and Optimisation](week04_local_search/) |
-| 5 | Constraint Satisfaction Problems |
+| 5 | [Constraint Satisfaction Problems](week05_csp/) |
 | 6 | Adversarial Search |
 | 7 | Logic |
 | 8 | Knowledge Systems |
