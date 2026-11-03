@@ -1,3 +1,5 @@
+#CILLIAN IS GOING TO DEMO NEXT WEEKS LAB FIRST 
+
 """AINL3001 — Topic 7: Knowledge Representation and Logical Reasoning.
 
 Student starter: complete the TODOs in Tasks 3 and 4.
@@ -8,6 +10,9 @@ BSP
 """
 
 # TASK 1 — Represent facts (provided; inspect and experiment).
+
+# it starts with known facts and check every rule. if rule's conditions are satisfied, 
+# it adds the conclusion to the known facts. It repeats until no new facts can be added.
 facts = {"rainy", "weekday"}
 
 # TASK 2 — Represent rules (provided; inspect and experiment).
@@ -29,8 +34,22 @@ def forward_chaining(known_facts, rules):
     3. Repeat until an entire pass adds no new facts.
     4. Return the completed set.
     """
-    # TODO
-    pass
+    # Step 1: Copy the original facts into a new set
+    inferred_facts = set(known_facts)
+
+    # Step 2: Keep track of whether any new facts were added
+    new_fact_added = True
+
+    while new_fact_added:
+        new_fact_added = False
+        for conditions, conclusion in rules:
+            # Check if all conditions are in the inferred_facts
+            if all(condition in inferred_facts for condition in conditions):
+                # If the conclusion is not already in inferred_facts, add it
+                if conclusion not in inferred_facts:
+                    inferred_facts.add(conclusion)
+                    new_fact_added = True
+    return inferred_facts
 
 
 def query(inferred_facts, statement):
@@ -38,8 +57,7 @@ def query(inferred_facts, statement):
 
     A False result means 'not established', not necessarily 'false'.
     """
-    # TODO
-    pass
+    return statement in inferred_facts
 
 
 if __name__ == "__main__":
