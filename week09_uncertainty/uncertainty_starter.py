@@ -26,11 +26,28 @@ This is a simplified teaching example, NOT medical advice.
 # Bayes' Theorem:
 #
 # P(A | B) = P(B | A) * P(A) / P(B)
+# P(Flu | Fever) = P(Fever | Flu) * P(Flu) / P(Fever)
+#                  = 0.80 * 0.10 / 0.20
+#                  = 0.08 / 0.20
+#                  = 0.40
 #
 # Questions:
 # 1. What is the posterior probability?
-# 2. Why is it larger than the prior probability?
+#    0.40, i.e. a 40% chance of Flu given that we observed Fever.
+
+# 2. Why is it larger than the prior probability
+#    The prior was 0.10. Fever is much more common among people with Flu
+#    (80%) than among people in general (20%). Fever is therefore
+#    4x more likely under Flu than overall (0.80 / 0.20 = 4), so
+#    observing it multiplies our belief in Flu by 4: 0.10 * 4 = 0.40.
+#    Evidence that is more expected under a hypothesis than in general
+#    raises belief in that hypothesis.
 # 3. What does this tell us about uncertain evidence?
+
+#    Evidence shifts belief; it rarely settles it. Even a strong symptom
+#    like Fever leaves us at 40%, because Fever also happens without Flu
+#    (other illnesses). Reasoning under uncertainty means updating a degree
+#    of belief as evidence arrives, not jumping to certain conclusions.
 
 
 # TASK 1 IMPLEMENT BAYES' THEOREM
@@ -45,8 +62,9 @@ def bayes(prior, likelihood, evidence):
 
     Assume valid probabilities and evidence > 0.
     """
-    # TODO
-    pass
+    numerator = likelihood * prior
+    posterior = numerator / evidence
+    return posterior
 
 
 # TASK 2 DIAGNOSTIC EXAMPLE
@@ -61,8 +79,10 @@ def diagnostic_example():
     4. Call bayes() with these values.
     5. Return the posterior probability.
     """
-    # TODO
-    pass
+    prior = 0.10        # P(Flu)
+    likelihood = 0.80   # P(Fever | Flu)
+    evidence = 0.20     # P(Fever)
+    return bayes(prior, likelihood, evidence)
 
 
 # TASK 3 ADDITIONAL EVIDENCE
@@ -119,8 +139,12 @@ def classify_risk(probability):
 
     These thresholds are for teaching purposes only.
     """
-    # TODO
-    pass
+    if probability < 0.30:
+        return "Low Risk"
+    elif probability < 0.70:
+        return "Medium Risk"
+    else:
+        return "High Risk"
 
 
 # TASK 6 DIAGNOSTIC SYSTEM WALKTHROUGH
